@@ -102,10 +102,14 @@
 	{
         SoundSource *s = [sources objectAtIndex:i];
         CGPoint dome;
+        UILabel *number= [[UILabel alloc]init];
+        
+        number.text = [NSString stringWithFormat:@"%d", i+1];
         dome.x = s.azimuth;
         dome.y = s.elevation;
         CGPoint screen = [self domeToScreen:dome];
         UIBezierPath *Path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(mCentre.x + screen.x-20, mCentre.y+ screen.y -20, 40, 40)];
+        
         Path.lineWidth = 2;
         [[UIColor redColor] setStroke]; 
         [Path stroke];

@@ -120,7 +120,7 @@
             //NSLog(@"Source angle %f,%f", s.azimuth,s.elevation);
             //NSLog(@"Source Postion %f,%f", [s getPosX],[s getPosY]);
             if([s containsPoint:relativePoint] && s.touch==nil){
-                NSLog(@"YOU GET IT");
+               // NSLog(@"YOU GET IT");
                 [s setPositionHV:relativePoint];
                 s.touch = touch;
                 [self.domeView setNeedsDisplay];
@@ -142,7 +142,7 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	NSSet *myTouches = [event touchesForView:self.domeView];
-    NSLog(@"Touch Count %d",myTouches.count);
+    //NSLog(@"Touch Count %d",myTouches.count);
 	for(UITouch *touch in myTouches) {
 		CGPoint touchPosition = [touch locationInView:(self.domeView)];
         //NSLog(@"Position doigt  : %f,%f", touchPosition.x,touchPosition.y);
@@ -168,7 +168,7 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 
 	NSSet *myTouches = [event touchesForView:self.domeView];
-    NSLog(@"Touch Count %d",myTouches.count);
+   // NSLog(@"Touch Count %d",myTouches.count);
 	for(UITouch *touch in myTouches) {
 		CGPoint touchPosition = [touch locationInView:(self.domeView)];
         //NSLog(@"Position doigt  : %f,%f", touchPosition.x,touchPosition.y);
