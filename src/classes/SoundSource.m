@@ -17,14 +17,16 @@
 @synthesize gain;
 @synthesize channel;
 @synthesize touch;
+@synthesize lastSending;
 -(id)init{
     self = [super init];
     gain = 1;
     azimuth = 0; //all in radian !!!
     azimuth_span = 0;
     elevation = 0;
-    channel = 0;
+    channel = 1;
     elevation_span = 0;
+    lastSending = [NSDate date];
     radius = [Util appWidth]/2-40-2;
     return self;
 }

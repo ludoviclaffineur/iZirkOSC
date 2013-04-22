@@ -25,6 +25,7 @@
 	NSMutableDictionary *activeTouches; // for persistent ids
 	CMMotionManager *motionManager; // for accel data
 	Osc *osc; // to send osc
+    
 
 	BOOL hasReshaped; // has the gui been reshaped?
 }
@@ -33,6 +34,7 @@
 
 @implementation PatchViewController
 @synthesize domeView;
+@synthesize redrawTime;
 
 - (void)awakeFromNib {
 	self.sceneType = SceneTypeEmpty;
@@ -47,10 +49,12 @@
     self.domeView.backgroundColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:255];
     [self.view addSubview:self.domeView];
     self.domeView.multipleTouchEnabled = YES;
-
+    redrawTime = [NSDate date];
 	AppDelegate *app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 
 	osc = app.osc;
+    osc.controller = self;
+    
 }
 
 - (void)viewDidLayoutSubviews {
@@ -151,7 +155,15 @@
             if(touch == s.touch){
                 CGPoint relativePoint =  CGPointMake( touchPosition.x- domeView.mCentre.x ,   touchPosition.y- domeView.mCentre.y) ;
                 [s setPositionHV:relativePoint];
-                [self.domeView setNeedsDisplay];
+                if([osc isListening]){
+                    if ([osc sendSource:s] && [redrawTime timeIntervalSinceNow]<-0.050f) {
+                        [self.domeView setNeedsDisplay];
+                        redrawTime = [NSDate date];
+                    }
+                    //NSLog(@"sending OSC");
+                }
+                
+                
             }
             
 

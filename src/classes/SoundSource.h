@@ -13,6 +13,7 @@
     int channel;
     float gain, azimuth, elevation, azimuth_span, elevation_span, radius;
     UITouch *touch;
+    NSDate *lastSending ;
 }
 
 - (bool) containsPoint :(CGPoint) p;
@@ -27,4 +28,5 @@
 @property (nonatomic, assign) float elevation_span;
 @property (nonatomic, assign) float radius;
 @property (nonatomic, retain) UITouch *touch;
+@property (nonatomic, retain) NSDate *lastSending ;
 @end

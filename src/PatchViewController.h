@@ -28,9 +28,11 @@ typedef enum {
 // DetailViewController for patches/scenes 
 @interface PatchViewController : UIViewController <UISplitViewControllerDelegate, UIAccelerometerDelegate, KeyGrabberDelegate>{
     DomeView *domeView;
+    NSDate *redrawTime;
 }
 
 @property(nonatomic, retain) DomeView *domeView;
+@property(nonatomic, retain)  NSDate *redrawTime;
 @property (strong) Gui *gui; // pd gui widgets
 
 // full path to current patch, the gui is loaded when setting this

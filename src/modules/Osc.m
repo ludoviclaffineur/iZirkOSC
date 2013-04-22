@@ -9,16 +9,18 @@
  *
  */
 #import "Osc.h"
-
 #import "Log.h"
 //#import "PureData.h"
 
 @interface Osc () {
 	OSCConnection *connection;
+    PatchViewController* controller;
+    NSDate* cadencing;
 }
 @end
 
 @implementation Osc
+@synthesize controller;
 
 @synthesize listening;
 
@@ -28,12 +30,11 @@
 		connection = [[OSCConnection alloc] init];
 		connection.delegate = self;
 		connection.continuouslyReceivePackets = YES;
-		
-		self.sendHost = @"127.0.0.1";
-		self.sendPort = 8080;
-		self.listenPort = 8088;
+        self.sendHost = @"10.0.1.2";
+		self.sendPort = 10116;
+		self.listenPort = 10114;
 		listening = NO;
-		
+		cadencing = [NSDate date];
 		// do a bind at the beginning so sending works
 		NSError *error;
 		if(![connection bindToAddress:nil port:self.listenPort error:&error]) {
@@ -47,66 +48,79 @@
 #pragma OSCConnectionDelegate
 
 - (void)oscConnection:(OSCConnection *)connection didReceivePacket:(OSCPacket *)packet {
-	 NSLog(@"OSC message to port %@: %@", packet.address, [packet.arguments description]);
+    //NSLog(@"OSC message to port %@: %@", packet.address, [packet.arguments description]);
+
+    
+    if([packet.address isEqual: @"/pan/az"]){
+        //NSLog(@"OSC message to port %@: %@", packet.address, [packet.arguments description]);
+        int channel = [[packet.arguments objectAtIndex:0]intValue];
+        int i=0;
+        for(i=0;i<controller.domeView.mChannelCount;i++){
+            SoundSource *s = [controller.domeView.sources objectAtIndex:i];
+            if(channel == s.channel){
+                break;
+            }
+        }
+        if(i!=controller.domeView.mChannelCount){
+            SoundSource *s = [controller.domeView.sources objectAtIndex:i];
+            s.channel = channel;
+            s.azimuth = [[packet.arguments objectAtIndex:1]floatValue];
+            s.elevation= [[packet.arguments objectAtIndex:2]floatValue];
+            s.azimuth_span = [[packet.arguments objectAtIndex:3]floatValue];
+            s.elevation_span = [[packet.arguments objectAtIndex:4]floatValue];
+            s.gain = [[packet.arguments objectAtIndex:5]floatValue];
+            
+        }
+        if ([controller.redrawTime timeIntervalSinceNow]<-0.040f){
+            [controller.domeView setNeedsDisplay];
+            controller.redrawTime = [NSDate date];
+        }
+        //NSLog(@"paket : %d", channel);
+    }
+    else if([packet.address isEqual: @"/maxsource"]){ //define max source available maxsource , (channel)*maxsource
+        NSLog(@"OSC message to port %@: %@", packet.address, [packet.arguments description]);
+        int maxsource = [[packet.arguments objectAtIndex:0]intValue];
+        if (maxsource>0 && maxsource<=8){
+            controller.domeView.mChannelCount = maxsource;
+            for (int i =0;i<maxsource;i++){
+                SoundSource *s = [controller.domeView.sources objectAtIndex:i];
+                s.channel = [[packet.arguments objectAtIndex:i]intValue];
+            }
+        }
+        
+    }
 }
 
 #pragma mark Send Events
 
-- (void)sendBang {
-	OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
-    message.address = OSC_OSC_ADDR;
-	[connection sendPacket:message toHost:self.sendHost port:self.sendPort];
-}
+- (BOOL) sendSource:(SoundSource*) s{
+    
+    double timeLastSending = [s.lastSending timeIntervalSinceNow];
+    double timeLastmessageSend = [cadencing timeIntervalSinceNow];
+    
+    
+    // do stuff...
+    if( timeLastSending < -0.03f) {
+        NSLog(@"t %f", timeLastmessageSend);
+        s.lastSending = [NSDate date];
+        cadencing = [NSDate date];
+        OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
+        message.address = OSC_OSC_ADDR;
+        [message addInt:s.channel];
+        [message addFloat:s.azimuth];
+        [message addFloat:s.elevation];
+        [message addFloat:s.azimuth_span];
+        [message addFloat:s.elevation_span];
+        [message addFloat:s.gain];
+        [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
+        NSLog(@"OSC message sent at %@ , %d", self.sendHost, s.channel);
+        return YES;
+    }
+    return NO;
 
-- (void)sendFloat:(float)f {
-	OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
-    message.address = OSC_OSC_ADDR;
-	[message addFloat:f];
-	[connection sendPacket:message toHost:self.sendHost port:self.sendPort];
-}
+}        //}
 
-- (void)sendSymbol:(NSString *)symbol {
-	OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
-    message.address = OSC_OSC_ADDR;
-	[message addString:symbol];
-	[connection sendPacket:message toHost:self.sendHost port:self.sendPort];
-}
 
-- (void)sendList:(NSArray *)list {
-	OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
-    message.address = OSC_OSC_ADDR;
-	for(NSObject *object in list) {
-		[message addArgument:object];
-	}
-	[connection sendPacket:message toHost:self.sendHost port:self.sendPort];
-}
-
-- (void)sendTouch:(NSString *)eventType forId:(int)id atX:(float)x andY:(float)y {
-	OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
-    message.address = OSC_TOUCH_ADDR;
-	[message addString:eventType];
-	[message addFloat:id+1];
-	[message addFloat:x];
-	[message addFloat:y];
-	[connection sendPacket:message toHost:self.sendHost port:self.sendPort];
-}
-
-- (void)sendAccel:(float)x y:(float)y z:(float)z {
-	OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
-    message.address = OSC_ACCEL_ADDR;
-	[message addFloat:x];
-	[message addFloat:y];
-	[message addFloat:z];
-	[connection sendPacket:message toHost:self.sendHost port:self.sendPort];
-}
-
-- (void)sendRotate:(float)degrees newOrientation:(NSString*)orientation {
-	OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
-    message.address = OSC_ROTATE_ADDR;
-	[message addFloat:degrees];
-	[message addString:orientation];
-	[connection sendPacket:message toHost:self.sendHost port:self.sendPort];
-}
 
 #pragma mark Overridden Getters / Setters
 

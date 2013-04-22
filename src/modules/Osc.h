@@ -9,11 +9,11 @@
  *
  */
 #import "CocoaOSC.h"
+#import "SoundSource.h"
+#import "PatchViewController.h"
 
-#define OSC_TOUCH_ADDR	@"/pd/event/touch"
-#define OSC_ACCEL_ADDR	@"/pd/event/accelerate"
-#define OSC_ROTATE_ADDR	@"/pd/event/rotate"
-#define OSC_OSC_ADDR	@"/pd/event/osc"
+
+#define OSC_OSC_ADDR	@"/pan/az"
 
 @interface Osc : NSObject <OSCConnectionDelegate>
 
@@ -21,22 +21,11 @@
 @property (nonatomic, strong) NSString *sendHost; // do not set when listening
 @property (nonatomic) int sendPort; // do not set when listening
 @property (nonatomic) int listenPort;
+@property (nonatomic, retain) PatchViewController* controller;
 
 #pragma mark Send Events
 
-// send to pdParty osc reciever
-- (void)sendBang;
-- (void)sendFloat:(float)f;
-- (void)sendSymbol:(NSString *)symbol;
-- (void)sendList:(NSArray *)list;
+- (BOOL)sendSource:(SoundSource*) s;
 
-// rj touch event
-- (void)sendTouch:(NSString *)eventType forId:(int)id atX:(float)x andY:(float)y;
-
-// rj accel event
-- (void)sendAccel:(float)x y:(float)y z:(float)z;
-
-// pdparty rotate event
-- (void)sendRotate:(float)degrees newOrientation:(NSString *)orientation;
 
 @end
