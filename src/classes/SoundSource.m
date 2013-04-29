@@ -16,7 +16,7 @@
 @synthesize elevation;
 @synthesize gain;
 @synthesize channel;
-@synthesize touch;
+@synthesize touchId;
 @synthesize lastSending;
 
 -(id)init{
@@ -29,6 +29,7 @@
     elevation_span = 0;
     lastSending = [NSDate date];
     radius = [Util appWidth]/2-40-2;
+    touchId = -1;
     return self;
 }
 

@@ -12,7 +12,7 @@
 @interface SoundSource : NSObject{
     int channel;
     float gain, azimuth, elevation, azimuth_span, elevation_span, radius;
-    UITouch *touch;
+    int touchId;
     NSDate *lastSending ;
 }
 
@@ -27,6 +27,6 @@
 @property (nonatomic, assign) float azimuth_span;
 @property (nonatomic, assign) float elevation_span;
 @property (nonatomic, assign) float radius;
-@property (nonatomic, retain) UITouch *touch;
+@property (nonatomic, assign) int touchId;
 @property (nonatomic, retain) NSDate *lastSending ;
 @end

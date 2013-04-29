@@ -122,7 +122,7 @@
         [message addFloat:s.elevation_span];
         [message addFloat:s.gain];
         [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
-        NSLog(@"OSC message sent at %@ , %d", self.sendHost, s.channel);
+       //  NSLog(@"OSC message sent at %@ , %d", self.sendHost, s.channel);
         return YES;
     }
     return NO;
@@ -130,6 +130,7 @@
 }
 
 - (BOOL) beginTouch:(SoundSource *)s {
+     NSLog(@"BEGINTOUCH , touch : %d, source %d", s.touchId, s.channel);
     OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
     message.address = @"/begintouch";
     [message addInt:s.channel];
@@ -138,6 +139,7 @@
 }
 
 - (BOOL) endTouch:(SoundSource *) s{
+    NSLog(@"ENDTOUCH , touch : %d, source %d", s.touchId, s.channel);
     OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
     message.address = @"/endtouch";
     [message addInt:s.channel];
