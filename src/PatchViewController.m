@@ -167,13 +167,13 @@
 	
 	NSSet *myTouches = [event touchesForView:self.domeView];
  //   NSLog(@"Touch touch mode %d",movementmode);
-    if (movementmode != 1){ //non independant mode
+   /* if (movementmode != 1){ //non independant mode
         NSArray *touches = [myTouches allObjects];
         UITouch *touch = [touches objectAtIndex:0];
         CGPoint touchPosition = [touch locationInView:(self.domeView)];
         for (int i=0;i<domeView.mChannelCount; i++){
             SoundSource *s = [domeView.sources objectAtIndex:i];
-            if(0== s.touchId){
+            if(0 == s.touchId){
                 CGPoint relativePoint =  CGPointMake( touchPosition.x- domeView.mCentre.x ,   touchPosition.y- domeView.mCentre.y) ;
                 [s setPositionHV:relativePoint];
                 if([osc isListening]){
@@ -185,7 +185,7 @@
             }
         }
     }
-    else{
+    else{*/
     
         for(UITouch *touch in myTouches) {
             int touchId = [[activeTouches objectForKey:[NSValue valueWithPointer:(__bridge const void *)(touch)]] intValue];
@@ -193,6 +193,23 @@
             //NSLog(@"Position doigt  : %f,%f", touchPosition.x,touchPosition.y);
             for (int i=0;i<domeView.mChannelCount; i++){
                 SoundSource *s = [domeView.sources objectAtIndex:i];
+                if (movementmode != 1){
+                    if(touchId == s.touchId && touchId ==0){
+                        CGPoint relativePoint =  CGPointMake( touchPosition.x- domeView.mCentre.x ,   touchPosition.y- domeView.mCentre.y) ;
+                        [s setPositionHV:relativePoint];
+                        if([osc isListening]){
+                            if ([osc sendSource:s] && [redrawTime timeIntervalSinceNow]<-0.050f) {
+                                [self.domeView setNeedsDisplay];
+                                redrawTime = [NSDate date];
+                            }
+                            //NSLog(@"sending OSC");
+                        }
+                    }
+
+                
+                }
+                else{
+                
                 if(touchId == s.touchId){
                     CGPoint relativePoint =  CGPointMake( touchPosition.x- domeView.mCentre.x ,   touchPosition.y- domeView.mCentre.y) ;
                     [s setPositionHV:relativePoint];
@@ -206,6 +223,7 @@
                     
                     
                 }
+                }
                 
                 
             }
@@ -215,7 +233,7 @@
              [osc sendTouch:RJ_TOUCH_DOWN forId:touchId atX:pos.x andY:pos.y];
              }*/
         }
-    }
+    //}
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
