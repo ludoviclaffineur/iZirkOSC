@@ -29,8 +29,11 @@ typedef enum {
 @interface PatchViewController : UIViewController <UISplitViewControllerDelegate, UIAccelerometerDelegate, KeyGrabberDelegate>{
     DomeView *domeView;
     NSDate *redrawTime;
+    int movementmode; //1->6
+    
 }
 
+@property(nonatomic, assign) int movementmode;
 @property(nonatomic, retain) DomeView *domeView;
 @property(nonatomic, retain)  NSDate *redrawTime;
 @property (strong) Gui *gui; // pd gui widgets

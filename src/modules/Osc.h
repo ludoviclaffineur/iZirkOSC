@@ -25,7 +25,8 @@
 
 #pragma mark Send Events
 
-- (BOOL)sendSource:(SoundSource*) s;
-
+- (BOOL) sendSource:(SoundSource*) s;
+- (BOOL) beginTouch:(SoundSource *)s;
+- (BOOL) endTouch:(SoundSource *)s;
 
 @end

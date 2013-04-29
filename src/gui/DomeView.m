@@ -9,8 +9,6 @@
 #import "DomeView.h"
 #import "Util.h"
 
-
-
 @implementation DomeView
 @synthesize mCentre;
 @synthesize mChannelCount;
@@ -33,14 +31,6 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 - (void)drawRect:(CGRect)rect {
 
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
@@ -108,11 +98,16 @@
         dome.x = s.azimuth;
         dome.y = s.elevation;
         CGPoint screen = [self domeToScreen:dome];
-        UIBezierPath *Path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(mCentre.x + screen.x-20, mCentre.y+ screen.y -20, 40, 40)];
+        UIBezierPath *Path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(mCentre.x + screen.x-20, mCentre.y + screen.y - 20, 40, 40)];
         
         Path.lineWidth = 2;
         [[UIColor redColor] setStroke]; 
         [Path stroke];
+        NSString *description = [[NSNumber numberWithInt:s.channel] stringValue];
+        CGSize descriptionSize = [description sizeWithFont:[UIFont systemFontOfSize:20] ];
+        
+        [description drawInRect:CGRectMake(mCentre.x + screen.x-5 , mCentre.y -10 + screen.y , descriptionSize.width, descriptionSize.height) withFont:[UIFont systemFontOfSize:20]];
+
 	}
 }
 

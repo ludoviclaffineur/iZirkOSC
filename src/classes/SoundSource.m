@@ -18,6 +18,7 @@
 @synthesize channel;
 @synthesize touch;
 @synthesize lastSending;
+
 -(id)init{
     self = [super init];
     gain = 1;

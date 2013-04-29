@@ -71,7 +71,7 @@
             s.gain = [[packet.arguments objectAtIndex:5]floatValue];
             
         }
-        if ([controller.redrawTime timeIntervalSinceNow]<-0.040f){
+        if ([controller.redrawTime timeIntervalSinceNow]<-0.050f){
             [controller.domeView setNeedsDisplay];
             controller.redrawTime = [NSDate date];
         }
@@ -89,6 +89,15 @@
         }
         
     }
+    else if([packet.address isEqual: @"/movementmode"]){ //define max source available maxsource , (channel)*maxsource
+        NSLog(@"OSC message to port %@: %@", packet.address, [packet.arguments description]);
+        int typemode = [[packet.arguments objectAtIndex:0]intValue];
+        if (typemode >0 && typemode<7){
+            controller.movementmode = typemode;
+        }
+        
+        
+    }
 }
 
 #pragma mark Send Events
@@ -96,12 +105,12 @@
 - (BOOL) sendSource:(SoundSource*) s{
     
     double timeLastSending = [s.lastSending timeIntervalSinceNow];
-    double timeLastmessageSend = [cadencing timeIntervalSinceNow];
+    //double timeLastmessageSend = [cadencing timeIntervalSinceNow];
     
     
     // do stuff...
-    if( timeLastSending < -0.03f) {
-        NSLog(@"t %f", timeLastmessageSend);
+    if( timeLastSending < -0.02f) {
+        //NSLog(@"t %f", timeLastmessageSend);
         s.lastSending = [NSDate date];
         cadencing = [NSDate date];
         OSCMutableMessage *message = [[OSCMutableMessage alloc] init];
@@ -118,7 +127,23 @@
     }
     return NO;
 
-}        //}
+}
+
+- (BOOL) beginTouch:(SoundSource *)s {
+    OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
+    message.address = @"/begintouch";
+    [message addInt:s.channel];
+    [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
+    return YES;
+}
+
+- (BOOL) endTouch:(SoundSource *) s{
+    OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
+    message.address = @"/endtouch";
+    [message addInt:s.channel];
+    [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
+    return YES;
+}
 
 
 

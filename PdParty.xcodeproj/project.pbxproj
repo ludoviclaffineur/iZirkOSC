@@ -160,6 +160,8 @@
 		30FA774F16E5636A000E8D2B /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FA774E16E5636A000E8D2B /* StartViewController.m */; };
 		30FA775316E68936000E8D2B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 30FA775216E68936000E8D2B /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30FA775516E69660000E8D2B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FA775416E69660000E8D2B /* SystemConfiguration.framework */; };
+		FE36B7B11725DB3A00F219D1 /* icone.png in Resources */ = {isa = PBXBuildFile; fileRef = FE36B7B01725DB3A00F219D1 /* icone.png */; };
+		FE36B7B31725DBDB00F219D1 /* icone144.png in Resources */ = {isa = PBXBuildFile; fileRef = FE36B7B21725DBDB00F219D1 /* icone144.png */; };
 		FEEA74071713330C00FBACDB /* SoundSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEA74061713330C00FBACDB /* SoundSource.m */; };
 		FEEA741917133E4800FBACDB /* DomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEEA741817133E4800FBACDB /* DomeView.m */; };
 /* End PBXBuildFile section */
@@ -413,6 +415,8 @@
 		30FA775116E68936000E8D2B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		30FA775216E68936000E8D2B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		30FA775416E69660000E8D2B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		FE36B7B01725DB3A00F219D1 /* icone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone.png; sourceTree = "<group>"; };
+		FE36B7B21725DBDB00F219D1 /* icone144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone144.png; sourceTree = "<group>"; };
 		FEEA74051713330C00FBACDB /* SoundSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSource.h; sourceTree = "<group>"; };
 		FEEA74061713330C00FBACDB /* SoundSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSource.m; sourceTree = "<group>"; };
 		FEEA741717133E4700FBACDB /* DomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DomeView.h; sourceTree = "<group>"; };
@@ -603,6 +607,8 @@
 		30ABE29816B5A8E500464926 = {
 			isa = PBXGroup;
 			children = (
+				FE36B7B21725DBDB00F219D1 /* icone144.png */,
+				FE36B7B01725DB3A00F219D1 /* icone.png */,
 				30ABE2F216B5D11D00464926 /* res */,
 				30ABE2D116B5CE2800464926 /* src */,
 				30ABE2D316B5CE3100464926 /* libs */,
@@ -1056,6 +1062,8 @@
 				30ABE30716B5D11D00464926 /* MainStoryboard_iPad.storyboard in Resources */,
 				30ABE30816B5D11D00464926 /* MainStoryboard_iPhone.storyboard in Resources */,
 				3088883E16BF062700781682 /* DejaVuSansMono.ttf in Resources */,
+				FE36B7B11725DB3A00F219D1 /* icone.png in Resources */,
+				FE36B7B31725DBDB00F219D1 /* icone144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
