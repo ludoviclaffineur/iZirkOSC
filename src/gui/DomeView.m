@@ -45,22 +45,22 @@
 -(void) drawCrosshairs
 {
     // Create an oval shape to draw.
-  
+
     for (int i=0; i< kNumMarks; i++) {
         UIBezierPath *aPath = [UIBezierPath bezierPath];
-        
+
         float fraction = 0.9f;
 		float angle = kMarksAngles[i] * (M_PI * 2 / 360.);
         float axis_x = cos(angle);
         float axis_y = sin(angle);
         [aPath moveToPoint:CGPointMake(mCentre.x + axis_x * mRadius, mCentre.y + axis_y * mRadius)];
-        
+
         // Draw the lines.
         [aPath addLineToPoint:CGPointMake(mCentre.x + axis_x * mRadius*fraction, mCentre.y + axis_y * mRadius*fraction)];
-        
+
         // Set the render colors.
         [[UIColor blueColor] setStroke];
-               
+
         CGContextRef aRef = UIGraphicsGetCurrentContext();
 
         aPath.lineWidth = 1.0;
@@ -68,15 +68,15 @@
         [aPath fill];
         [aPath stroke];
     }
-    
+
     UIBezierPath * xAxis = [UIBezierPath bezierPath];
     UIBezierPath * yAxis = [UIBezierPath bezierPath];
-    
+
     [xAxis moveToPoint:CGPointMake(mCentre.x- mRadius, mCentre.y)];
     [xAxis addLineToPoint:CGPointMake(mCentre.x+ mRadius, mCentre.y)];
     xAxis.lineWidth=1.0;
     [xAxis stroke];
-    
+
     [yAxis moveToPoint:CGPointMake(mCentre.x, mCentre.y- mRadius)];
     [yAxis addLineToPoint:CGPointMake(mCentre.x, mCentre.y + mRadius)];
     yAxis.lineWidth=1.0;
@@ -93,19 +93,19 @@
         SoundSource *s = [sources objectAtIndex:i];
         CGPoint dome;
         UILabel *number= [[UILabel alloc]init];
-        
+
         number.text = [NSString stringWithFormat:@"%d", i+1];
         dome.x = s.azimuth;
         dome.y = s.elevation;
         CGPoint screen = [self domeToScreen:dome];
         UIBezierPath *Path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(mCentre.x + screen.x-20, mCentre.y + screen.y - 20, 40, 40)];
-        
+
         Path.lineWidth = 2;
-        [[UIColor redColor] setStroke]; 
+        [[UIColor redColor] setStroke];
         [Path stroke];
         NSString *description = [[NSNumber numberWithInt:s.channel] stringValue];
         CGSize descriptionSize = [description sizeWithFont:[UIFont systemFontOfSize:20] ];
-        
+
         [description drawInRect:CGRectMake(mCentre.x + screen.x-5 , mCentre.y -10 + screen.y , descriptionSize.width, descriptionSize.height) withFont:[UIFont systemFontOfSize:20]];
 
 	}

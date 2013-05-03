@@ -29,4 +29,12 @@
 - (BOOL) beginTouch:(SoundSource *)s;
 - (BOOL) endTouch:(SoundSource *)s;
 
+- (BOOL) beginAzimSpanMove:(SoundSource *)s;
+- (BOOL) moveAzimSpan:(SoundSource *)s;
+- (BOOL) endAzimSpanMove:(SoundSource*)s;
+
+- (BOOL) beginElevSpanMove:(SoundSource *)s;
+- (BOOL) moveElevSpan:(SoundSource *)s;
+- (BOOL) endElevSpanMove:(SoundSource*)s;
+
 @end

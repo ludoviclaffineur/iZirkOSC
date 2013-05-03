@@ -138,6 +138,7 @@
     return YES;
 }
 
+
 - (BOOL) endTouch:(SoundSource *) s{
     NSLog(@"ENDTOUCH , touch : %d, source %d", s.touchId, s.channel);
     OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
@@ -147,7 +148,38 @@
     return YES;
 }
 
-
+- (BOOL) beginAzimSpanMove:(SoundSource *)s{
+    NSLog(@"beginAzimSpanMove , touch : %d, source %d", s.touchId, s.channel);
+    OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
+    message.address = @"/beginAzimSpanMove";
+    [message addInt:s.channel];
+    [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
+    return YES;
+}
+- (BOOL) endAzimSpanMove:(SoundSource*)s{
+    NSLog(@"endAzimSpanMove , touch : %d, source %d", s.touchId, s.channel);
+    OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
+    message.address = @"/endAzimSpanMove";
+    [message addInt:s.channel];
+    [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
+    return YES;
+}
+- (BOOL) beginElevSpanMove:(SoundSource *)s{
+    NSLog(@"beginElevSpanMove , touch : %d, source %d", s.touchId, s.channel);
+    OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
+    message.address = @"/beginElevSpanMove";
+    [message addInt:s.channel];
+    [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
+    return YES;
+}
+- (BOOL) endElevSpanMove:(SoundSource*)s{
+    NSLog(@"endElevSpanMove , touch : %d, source %d", s.touchId, s.channel);
+    OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
+    message.address = @"/endElevSpanMove";
+    [message addInt:s.channel];
+    [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
+    return YES;
+}
 
 #pragma mark Overridden Getters / Setters
 

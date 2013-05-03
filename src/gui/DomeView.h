@@ -18,18 +18,18 @@ static const int kNumMarks = sizeof(kMarksAngles)/sizeof(kMarksAngles[0]);
     Rect	mDomeFrame, mFullFrame;
 	float	mActiveWidth;
 	BOOL	mMouseDown;
-    
+
     // Attribute copies
     Point     mSourcePoint;
-    
+
     //PolarAngles mSourceHeading;
-   
+
      NSMutableArray *sources;
 	int mChannelCount;
 
-	
+
 	//NSImage   * mBackgroundCache;
-    
+
     // Math
     float   mRadius;
     CGPoint mCentre;

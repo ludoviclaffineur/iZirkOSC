@@ -54,14 +54,14 @@
     movementmode = 1;
 	osc = app.osc;
     osc.controller = self;
-    
+
 }
 
 
 - (void)viewDidLayoutSubviews {
-	
+
 	//self.gui.bounds = self.view.bounds;
-	
+
 	// do animations if gui has already been setup once
 	// http://www.techotopia.com/index.php/Basic_iOS_4_iPhone_Animation_using_Core_Animation
 	if(hasReshaped) {
@@ -77,7 +77,7 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-	
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,18 +108,18 @@
 #pragma mark Overridden Getters / Setters
 
 - (void)setEnableAccelerometer:(BOOL)enableAccelerometer {
-	
+
 }
 
 #pragma mark Touches
 
 // persistent touch ids from ofxIPhone:
 // https://github.com/openframeworks/openFrameworks/blob/master/addons/ofxiPhone/src/core/ofxiOSEAGLView.mm
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {	
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     NSSet *myTouches = [event touchesForView:self.domeView];
-    
-    
-    
+
+
+
 
 /*    if (movementmode !=1 && [myTouches count] == 1) {
         NSArray *touches = [myTouches allObjects];
@@ -159,12 +159,12 @@
             }
         }
     //}
-	
-    
+
+
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	
+
 	NSSet *myTouches = [event touchesForView:self.domeView];
  //   NSLog(@"Touch touch mode %d",movementmode);
    /* if (movementmode != 1){ //non independant mode
@@ -186,7 +186,7 @@
         }
     }
     else{*/
-    
+
         for(UITouch *touch in myTouches) {
             int touchId = [[activeTouches objectForKey:[NSValue valueWithPointer:(__bridge const void *)(touch)]] intValue];
             CGPoint touchPosition = [touch locationInView:(self.domeView)];
@@ -206,10 +206,10 @@
                         }
                     }
 
-                
+
                 }
                 else{
-                
+
                 if(touchId == s.touchId){
                     CGPoint relativePoint =  CGPointMake( touchPosition.x- domeView.mCentre.x ,   touchPosition.y- domeView.mCentre.y) ;
                     [s setPositionHV:relativePoint];
@@ -220,12 +220,12 @@
                         }
                         //NSLog(@"sending OSC");
                     }
-                    
-                    
+
+
                 }
                 }
-                
-                
+
+
             }
             //		DDLogVerbose(@"touch %d: down %.4f %.4f", touchId+1, pos.x, pos.y);
             /*[PureData sendTouch:RJ_TOUCH_DOWN forId:touchId atX:pos.x andY:pos.y];
@@ -237,7 +237,7 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+
 	NSSet *myTouches = [event touchesForView:self.domeView];
 
     /*if([myTouches count]==1){
@@ -247,7 +247,7 @@
             //[osc endTouch:s];
             //NSLog(@"Source angle %f,%f", s.azimuth,s.elevation);
             //NSLog(@"Source Postion %f,%f", [s getPosX],[s getPosY]);
-            
+
         }
     }*/
    // NSLog(@"Touch Count %d",myTouches.count);
@@ -265,7 +265,7 @@
             }
             //NSLog(@"Source angle %f,%f", s.azimuth,s.elevation);
             //NSLog(@"Source Postion %f,%f", [s getPosX],[s getPosY]);
-            
+
         }
         DDLogVerbose(@"touch %d: up", touchId+1);
         //		DDLogVerbose(@"touch %d: down %.4f %.4f", touchId+1, pos.x, pos.y);
@@ -295,7 +295,7 @@
 	if([Util isDeviceATablet]) {
 		barButtonItem.title = NSLocalizedString(@"Settings", @"Settings");
 	}
-    
+
 	[self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
 }
@@ -311,4 +311,72 @@
 	return YES;
 }
 
+- (IBAction)SliderValueChanged:(id)sender {
+    if ([osc isListening]){
+        if(sender == _ElevSpanSlider){
+            for(SoundSource *s in domeView.sources){
+                if (s.touchId != -1){
+                    [osc endElevSpanMove:s];
+                }
+            }
+        }
+        else if(sender == _AzimSpanSlider){
+            
+            for(SoundSource *s in domeView.sources){
+                if (s.touchId != -1){
+                    [osc endAzimSpanMove:s];
+                }
+            }
+        }
+    }
+}
+
+- (IBAction)SliderTouchUpOutside:(id)sender {
+    [self SliderTouchUpInsider:sender];
+
+}
+
+- (IBAction)SliderTouchUpInsider:(id)sender {
+    NSLog(@"TouchUP");
+    if ([osc isListening]){
+        if(sender == _ElevSpanSlider){
+            for(SoundSource *s in domeView.sources){
+                if (s.touchId != -1){
+                    [osc endElevSpanMove:s];
+                }
+            }
+        }
+        else if(sender == _AzimSpanSlider){
+
+            for(SoundSource *s in domeView.sources){
+                if (s.touchId != -1){
+                    [osc endAzimSpanMove:s];
+                }
+            }
+        }
+    }
+}
+
+- (IBAction)SliderTouched:(id)sender {
+    if ([osc isListening]){
+        if(sender == _ElevSpanSlider){
+            NSLog(@"%d",activeTouches.count);
+            for(SoundSource *s in domeView.sources){
+                if (s.touchId !=-1){
+                    [osc beginElevSpanMove:s];
+                }
+            }
+
+        }
+        else if(sender == _AzimSpanSlider){
+            for(SoundSource *s in domeView.sources){
+                if (s.touchId != -1){
+                    [osc beginAzimSpanMove:s];
+                }
+            }
+
+        }
+    }
+
+}
 @end

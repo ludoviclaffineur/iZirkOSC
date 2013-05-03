@@ -23,11 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+
 	// set Osc pointer
 	AppDelegate *app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 	osc = app.osc;
-	
+
 	self.connectionEnabledSwitch.on = osc.isListening;
 	self.hostTextField.text = osc.sendHost;
 	self.outgoingPortTextField.text = [NSString stringWithFormat:@"%d", osc.sendPort];
@@ -36,9 +36,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	
+
 	//self.localHostLabel.text = [WebServer wifiInterfaceAddress];
-	
+
 	[super viewWillAppear:animated];
 }
 
@@ -67,7 +67,7 @@
 }
 
 - (IBAction)setOutgoingPort:(id)sender {
-    
+
 	int port = -1;
     [[NSScanner scannerWithString:self.outgoingPortTextField.text] scanInt:&port];
 	if(port < 0 || port<1024) {

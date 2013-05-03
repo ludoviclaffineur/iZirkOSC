@@ -25,13 +25,19 @@ typedef enum {
 @class Util;
 @class Gui;
 
-// DetailViewController for patches/scenes 
+// DetailViewController for patches/scenes
 @interface PatchViewController : UIViewController <UISplitViewControllerDelegate, UIAccelerometerDelegate, KeyGrabberDelegate>{
     DomeView *domeView;
     NSDate *redrawTime;
     int movementmode; //1->6
-    
+
 }
+- (IBAction)SliderValueChanged:(id)sender;
+- (IBAction)SliderTouchUpOutside:(id)sender;
+- (IBAction)SliderTouchUpInsider:(id)sender;
+- (IBAction)SliderTouched:(id)sender;
+@property (weak, nonatomic) IBOutlet UISlider *ElevSpanSlider;
+@property (weak, nonatomic) IBOutlet UISlider *AzimSpanSlider;
 
 @property(nonatomic, assign) int movementmode;
 @property(nonatomic, retain) DomeView *domeView;
