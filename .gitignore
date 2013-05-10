@@ -13,7 +13,7 @@
 # files that we want to exclude
 #
 #########################
- 
+doc/ 
 #####
 # OS X temporary files that should never be committed
  

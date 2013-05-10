@@ -1,7 +1,0 @@
-Headers: libs
-
-C Flags: -DPD -DHAVE_UNISTD_H -DUSEAPI_DUMMY
-
-Frameworks: AudioToolbox CoreAudio CoreMidi
-
-Compiler flags for non-Arc libs: -fno-objc-arc
