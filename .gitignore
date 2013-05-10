@@ -12,8 +12,7 @@
 # This file is for SOURCE projects, where there are many extra
 # files that we want to exclude
 #
-#########################
-doc/ 
+######################### 
 #####
 # OS X temporary files that should never be committed
  
@@ -21,7 +20,7 @@ doc/
 *.swp
 *.lock
 profile
- 
+doc/
  
 ####
 # Xcode temporary files that should never be committed
