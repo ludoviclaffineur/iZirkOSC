@@ -23,7 +23,6 @@ typedef enum {
 } SceneType;
 
 @class Util;
-@class Gui;
 
 // DetailViewController for patches/scenes
 @interface PatchViewController : UIViewController <UISplitViewControllerDelegate, UIAccelerometerDelegate, KeyGrabberDelegate>{
@@ -32,27 +31,27 @@ typedef enum {
     int movementmode; //1->6
 
 }
+//! Called when a slider value changed
 - (IBAction)SliderValueChanged:(id)sender;
+//! Called when a touch is release outside a slider
 - (IBAction)SliderTouchUpOutside:(id)sender;
+//! Called when a touch is release inside a slider
 - (IBAction)SliderTouchUpInsider:(id)sender;
+//! Called when a slider is touched
 - (IBAction)SliderTouched:(id)sender;
+
+//! Elevation span slider
 @property (weak, nonatomic) IBOutlet UISlider *ElevSpanSlider;
+//! Azimuth span slider
 @property (weak, nonatomic) IBOutlet UISlider *AzimSpanSlider;
 
+//! movement mode type (constrain mode)
 @property(nonatomic, assign) int movementmode;
+//! link to the domeview
 @property(nonatomic, retain) DomeView *domeView;
+//! the last time it was redrawn
 @property(nonatomic, retain)  NSDate *redrawTime;
-@property (strong) Gui *gui; // pd gui widgets
 
-// full path to current patch, the gui is loaded when setting this
-@property (nonatomic, strong) NSString* patch;
 
-// current patch scene type, set to SceneTypeEmpty if patch is set to nil or did not load correctly
-@property (nonatomic, assign) SceneType sceneType;
-
-@property (nonatomic, assign) BOOL enableAccelerometer; // enable receiving accel events
-
-// convert an orientation into degrees
-+ (int)orientationInDegrees:(UIInterfaceOrientation)orientation;
 
 @end

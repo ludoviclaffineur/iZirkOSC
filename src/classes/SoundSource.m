@@ -1,9 +1,9 @@
 //
-//  SoundSource.m
+//  SoundSource.h
 //  PdParty
 //
 //  Created by Lud's on 8/04/13.
-//  Copyright (c) 2013 danomatika. All rights reserved.
+//  Copyright (c) 2013 ca.udem.ca All rights reserved.
 //
 
 #import "SoundSource.h"

@@ -16,7 +16,7 @@
 #import "Osc.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+//! The window
 @property (strong, nonatomic) UIWindow *window;
 
 // global access

@@ -37,7 +37,6 @@
 @synthesize movementmode;
 
 - (void)awakeFromNib {
-	self.sceneType = SceneTypeEmpty;
 	activeTouches = [[NSMutableDictionary alloc] init];
 	hasReshaped = NO;
 	[super awakeFromNib];

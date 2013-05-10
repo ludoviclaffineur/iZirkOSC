@@ -16,12 +16,6 @@
 
 @interface AppDelegate ()
 
-// recursively copy dirs and patches in the resource patches dir to the
-// Documents folder, removes/overwrites any currently existing dirs
-- (void)copyResourcePatchesToDocuments;
-
-// add subfolders in libs folder in resource patches dir to search path
-- (void)addPatchLibSearchPaths;
 
 @end
 
