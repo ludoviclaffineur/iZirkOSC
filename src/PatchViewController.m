@@ -13,7 +13,7 @@
 #import "Log.h"
 #import "Util.h"
 //#import "Gui.h"
-#import "PdParser.h"
+//#import "PdParser.h"
 #import "PdFile.h"
 #import "KeyGrabber.h"
 #import "AppDelegate.h"
@@ -199,7 +199,7 @@
                         [s setPositionHV:relativePoint];
                         if([osc isListening]){
                             if ([osc sendSource:s] && [redrawTime timeIntervalSinceNow]<-0.050f) {
-                                [self.domeView setNeedsDisplay];
+                                // [self.domeView setNeedsDisplay];
                                 redrawTime = [NSDate date];
                             }
                             //NSLog(@"sending OSC");

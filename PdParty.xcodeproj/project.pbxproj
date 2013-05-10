@@ -149,10 +149,8 @@
 		30C77BF016F1C84E00988EB9 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C77BE916F1C84E00988EB9 /* GCDAsyncUdpSocket.m */; };
 		30C77BF116F1C84E00988EB9 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C77BEC16F1C84E00988EB9 /* AsyncSocket.m */; };
 		30C77BF216F1C84E00988EB9 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C77BEE16F1C84E00988EB9 /* AsyncUdpSocket.m */; };
-		30C9BF6416E8457400E5AA5B /* KeyGrabber.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C9BF6316E8457400E5AA5B /* KeyGrabber.m */; };
 		30C9BF6716E8460700E5AA5B /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C9BF6616E8460700E5AA5B /* Util.m */; };
 		30E89D0616E8758A005B40C4 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E89D0516E8758A005B40C4 /* CoreMotion.framework */; };
-		30E89D1E16EC4535005B40C4 /* PdParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 30E89D1D16EC4535005B40C4 /* PdParser.m */; };
 		30F7A19216BFF66F00DE265F /* ringbuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 30F7A18C16BFF66F00DE265F /* ringbuffer.c */; };
 		30F7A19316BFF66F00DE265F /* z_print_util.c in Sources */ = {isa = PBXBuildFile; fileRef = 30F7A18E16BFF66F00DE265F /* z_print_util.c */; };
 		30F7A19416BFF66F00DE265F /* z_queued.c in Sources */ = {isa = PBXBuildFile; fileRef = 30F7A19016BFF66F00DE265F /* z_queued.c */; };
@@ -395,13 +393,9 @@
 		30C77BEC16F1C84E00988EB9 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		30C77BED16F1C84E00988EB9 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
 		30C77BEE16F1C84E00988EB9 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
-		30C9BF6216E8457400E5AA5B /* KeyGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyGrabber.h; sourceTree = "<group>"; };
-		30C9BF6316E8457400E5AA5B /* KeyGrabber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyGrabber.m; sourceTree = "<group>"; };
 		30C9BF6516E8460700E5AA5B /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		30C9BF6616E8460700E5AA5B /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		30E89D0516E8758A005B40C4 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		30E89D1C16EC4535005B40C4 /* PdParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PdParser.h; sourceTree = "<group>"; };
-		30E89D1D16EC4535005B40C4 /* PdParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PdParser.m; sourceTree = "<group>"; };
 		30F7A18C16BFF66F00DE265F /* ringbuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ringbuffer.c; sourceTree = "<group>"; };
 		30F7A18D16BFF66F00DE265F /* ringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ringbuffer.h; sourceTree = "<group>"; };
 		30F7A18E16BFF66F00DE265F /* z_print_util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = z_print_util.c; sourceTree = "<group>"; };
@@ -415,6 +409,8 @@
 		30FA775416E69660000E8D2B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FE36B7B01725DB3A00F219D1 /* icone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone.png; sourceTree = "<group>"; };
 		FE36B7B21725DBDB00F219D1 /* icone144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone144.png; sourceTree = "<group>"; };
+		FEC25250173D4CC200EBFAFC /* KeyGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyGrabber.h; sourceTree = "<group>"; };
+		FEC25251173D4CC200EBFAFC /* KeyGrabber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyGrabber.m; sourceTree = "<group>"; };
 		FEEA74051713330C00FBACDB /* SoundSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundSource.h; sourceTree = "<group>"; };
 		FEEA74061713330C00FBACDB /* SoundSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundSource.m; sourceTree = "<group>"; };
 		FEEA741717133E4700FBACDB /* DomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DomeView.h; sourceTree = "<group>"; };
@@ -965,10 +961,8 @@
 		30C9BF6116E8457400E5AA5B /* classes */ = {
 			isa = PBXGroup;
 			children = (
-				30C9BF6216E8457400E5AA5B /* KeyGrabber.h */,
-				30C9BF6316E8457400E5AA5B /* KeyGrabber.m */,
-				30E89D1C16EC4535005B40C4 /* PdParser.h */,
-				30E89D1D16EC4535005B40C4 /* PdParser.m */,
+				FEC25250173D4CC200EBFAFC /* KeyGrabber.h */,
+				FEC25251173D4CC200EBFAFC /* KeyGrabber.m */,
 				30C9BF6516E8460700E5AA5B /* Util.h */,
 				30C9BF6616E8460700E5AA5B /* Util.m */,
 				FEEA74051713330C00FBACDB /* SoundSource.h */,
@@ -1189,9 +1183,7 @@
 				3050822D16E198C900895CB2 /* DispatchQueueLogFormatter.m in Sources */,
 				30FA774F16E5636A000E8D2B /* StartViewController.m in Sources */,
 				30FA775316E68936000E8D2B /* Reachability.m in Sources */,
-				30C9BF6416E8457400E5AA5B /* KeyGrabber.m in Sources */,
 				30C9BF6716E8460700E5AA5B /* Util.m in Sources */,
-				30E89D1E16EC4535005B40C4 /* PdParser.m in Sources */,
 				30C77BB416F1ADFB00988EB9 /* Osc.m in Sources */,
 				30C77BC016F1BEAC00988EB9 /* NS+OSCAdditions.m in Sources */,
 				30C77BC116F1BEAC00988EB9 /* OSCConnection.m in Sources */,

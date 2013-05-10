@@ -21,8 +21,11 @@
 
 @implementation Osc
 @synthesize controller;
-
+@synthesize listenPort;
+@synthesize sendHost;
+@synthesize sendPort;
 @synthesize listening;
+
 
 - (id)init {
 	self = [super init];
@@ -69,13 +72,16 @@
             s.azimuth_span = [[packet.arguments objectAtIndex:3]floatValue];
             s.elevation_span = [[packet.arguments objectAtIndex:4]floatValue];
             s.gain = [[packet.arguments objectAtIndex:5]floatValue];
-            
+            //NSLog(@"paket : %d", channel);
+            if ([controller.redrawTime timeIntervalSinceNow]<-0.050f){
+                [controller.domeView setNeedsDisplay];
+                controller.redrawTime = [NSDate date];
+                 
+            }
+             //NSLog(@"paket : %d", channel);
         }
-        if ([controller.redrawTime timeIntervalSinceNow]<-0.050f){
-            [controller.domeView setNeedsDisplay];
-            controller.redrawTime = [NSDate date];
-        }
-        //NSLog(@"paket : %d", channel);
+        
+       
     }
     else if([packet.address isEqual: @"/maxsource"]){ //define max source available maxsource , (channel)*maxsource
         NSLog(@"OSC message to port %@: %@", packet.address, [packet.arguments description]);

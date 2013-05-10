@@ -15,23 +15,24 @@ static const float kMarksAngles[] =
 
 static const int kNumMarks = sizeof(kMarksAngles)/sizeof(kMarksAngles[0]);
 @interface DomeView : UIView{
-    Rect	mDomeFrame, mFullFrame;
+    //! dome frame
+    Rect	mDomeFrame;
+    //! width active
 	float	mActiveWidth;
-	BOOL	mMouseDown;
-
-    // Attribute copies
-    Point     mSourcePoint;
-
-    //PolarAngles mSourceHeading;
-
+    //! 
+    //Point     mSourcePoint;
+    //! Sources array
      NSMutableArray *sources;
+    //! NbrSource - Number of active channels 
 	int mChannelCount;
 
 
 	//NSImage   * mBackgroundCache;
 
     // Math
+    //! Radius in pixels
     float   mRadius;
+    //! position of the center
     CGPoint mCentre;
 }
 

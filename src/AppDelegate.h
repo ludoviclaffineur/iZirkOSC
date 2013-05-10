@@ -22,8 +22,9 @@
 // global access
 //@property (nonatomic, strong) PureData *pureData;
 //@property (nonatomic, strong) Midi *midi;
+//! Access to the osc server and sender.
 @property (nonatomic, strong) Osc *osc;
 
-@property (nonatomic, strong) CMMotionManager *motionManager; // for accel data
+//@property (nonatomic, strong) CMMotionManager *motionManager; // for accel data
 
 @end

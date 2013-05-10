@@ -16,19 +16,6 @@
 
 #pragma mark Connections
 
+//! Osc Label on the side pannel
 @property (nonatomic, weak) IBOutlet UILabel *oscLabel;
-
-
-//#pragma mark WebServer
-//
-//@property (nonatomic, strong) WebServer *server;
-//
-//@property (nonatomic, weak) IBOutlet UISwitch *serverEnabledSwitch;
-//@property (nonatomic, weak) IBOutlet UILabel *serverPortLabel;
-//@property (nonatomic, weak) IBOutlet UITextField *serverPortTextField;
-//
-//- (IBAction)enableWebServer:(id)sender;
-//
-//- (IBAction)setWebServerPort:(id)sender;
-
 @end
