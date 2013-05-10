@@ -88,44 +88,8 @@
     return address;
 }
 
-#pragma mark Logging Shortcuts
 
-+ (void)logRect:(CGRect)rect {
-	DDLogVerbose(@"%.2f %.2f %.2f %.2f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-}
 
-+ (void)logData:(NSData *)data withHeader:(NSString *)header {
-	unsigned char *bytes = (unsigned char*)[data bytes];
-	NSMutableString *byteString = [[NSMutableString alloc] init];
-	for(int i = 0; i < data.length; ++i) {
-		[byteString appendFormat:@"%02X ", bytes[i]];
-	}
-	DDLogVerbose(@"%@[ %@]", header, byteString);
-}
-
-+ (void)logColor:(UIColor *)color {
-	CGFloat r, g, b, a;
-	if([color getRed:&r green:&g blue:&b alpha:&a]) {
-		DDLogVerbose(@"%f %f %f %f", r, g, b, a);
-	}
-}
-
-#pragma mark Paths
-
-+ (NSString *)bundlePath {
-	return [[NSBundle mainBundle] bundlePath];
-}
-
-+ (NSString *)documentsPath {
-	NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	return [searchPaths objectAtIndex:0];
-}
-
-+ (BOOL)isDirectory:(NSString *)path {
-	BOOL isDir = NO;
-	[[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
-	return isDir;
-}
 
 @end
 

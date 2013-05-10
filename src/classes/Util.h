@@ -14,44 +14,27 @@
 
 #pragma mark Device
 
-// are we running in the simulator?
+//! returns YES if we are running in the simulator?
 + (BOOL)isDeviceRunningInSimulator;
 
-// is this device an ipad?
+//! Returns YES if this device is an ipad?
 + (BOOL)isDeviceATablet;
+//! Returns the current IP Address and error if they is'nt
 + (NSString *)getIPAddress;
+//! converts radian to degree
 + (float) radianToDegree:(float) radian;
+//! converts degree to racian
 + (float) degreeToRadian:(float) degree;
 
 #pragma mark App
 
-// application pixel dimensions
+//! application pixel width
 + (CGFloat) appWidth;
+//! application pixel height
 + (CGFloat) appHeight;
+//! application size
 + (CGSize) appSize;
 
-#pragma mark Logging Shortcuts
-
-// print the pos & size of a CGRect
-+ (void)logRect:(CGRect)rect;
-
-// print NSData as raw hex bytes
-+ (void)logData:(NSData *)data withHeader:(NSString *)header;
-
-// print a UIColor as RGBA components
-+ (void)logColor:(UIColor *)color;
-
-#pragma mark Paths
-
-// full path to the app bundle directory
-+ (NSString *)bundlePath;
-
-// full path to the Documents directory
-+ (NSString *)documentsPath;
-
-
-// returns YES if given path exists and is a directory
-+ (BOOL)isDirectory:(NSString *)path;
 
 @end
 
