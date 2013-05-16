@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>iZirkOSC: Main Page</title>
+<title>iZirkOSC: KeyGrabberView Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,8 +39,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -60,7 +60,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-</div><!-- top -->
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -75,11 +82,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#properties">Properties</a> &#124;
+<a href="class_key_grabber_view-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">iZirkOSC Documentation</div>  </div>
+<div class="title">KeyGrabberView Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>a hidden view that grabs key events without showing the soft keyboard  
+ <a href="interface_key_grabber_view.html#details">More...</a></p>
+
+<p><code>#import &lt;<a class="el" href="_key_grabber_8h_source.html">KeyGrabber.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for KeyGrabberView:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="interface_key_grabber_view.png" usemap="#KeyGrabberView_map" alt=""/>
+  <map id="KeyGrabberView_map" name="KeyGrabberView_map">
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a627a5ec7b690a19312a6085ce2731684"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a627a5ec7b690a19312a6085ce2731684"></a>
+BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_key_grabber_view.html#a627a5ec7b690a19312a6085ce2731684">active</a></td></tr>
+<tr class="memdesc:a627a5ec7b690a19312a6085ce2731684"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable key grabbing? <br/></td></tr>
+<tr class="separator:a627a5ec7b690a19312a6085ce2731684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abffc46dfe966e5a0546585f7f0113747"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abffc46dfe966e5a0546585f7f0113747"></a>
+id&lt; <a class="el" href="protocol_key_grabber_delegate-p.html">KeyGrabberDelegate</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_key_grabber_view.html#abffc46dfe966e5a0546585f7f0113747">delegate</a></td></tr>
+<tr class="memdesc:abffc46dfe966e5a0546585f7f0113747"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the delegate to receive events <br/></td></tr>
+<tr class="separator:abffc46dfe966e5a0546585f7f0113747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf1f68bf7a1b2374acb11ad163ce8b97"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf1f68bf7a1b2374acb11ad163ce8b97"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_key_grabber_view.html#acf1f68bf7a1b2374acb11ad163ce8b97">key</a></td></tr>
+<tr class="memdesc:acf1f68bf7a1b2374acb11ad163ce8b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">or read the latest event value here <br/></td></tr>
+<tr class="separator:acf1f68bf7a1b2374acb11ad163ce8b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>a hidden view that grabs key events without showing the soft keyboard </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
+<li>/Users/ludoviclaffineur/Documents/iZirkOSC/src/classes/<a class="el" href="_key_grabber_8h_source.html">KeyGrabber.h</a></li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
