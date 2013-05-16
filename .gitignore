@@ -21,7 +21,7 @@
 *.lock
 profile
 doc/
- 
+html/ 
 ####
 # Xcode temporary files that should never be committed
 #

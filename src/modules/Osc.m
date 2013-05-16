@@ -90,7 +90,7 @@
             controller.domeView.mChannelCount = maxsource;
             for (int i =0;i<maxsource;i++){
                 SoundSource *s = [controller.domeView.sources objectAtIndex:i];
-                s.channel = [[packet.arguments objectAtIndex:i]intValue];
+                s.channel = [[packet.arguments objectAtIndex:i+1]intValue];
             }
         }
         
@@ -115,7 +115,7 @@
     
     
     // do stuff...
-    if( timeLastSending < -0.02f) {
+    if( timeLastSending < -0.05f) {
         //NSLog(@"t %f", timeLastmessageSend);
         s.lastSending = [NSDate date];
         cadencing = [NSDate date];
