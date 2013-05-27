@@ -60,4 +60,20 @@
     return (-radius * cosf(azimuth) * cosf(elevation));
 }
 
+- (void) setAzimuthSpan:(float) f{
+    azimuth_span = f;
+}
+
+- (float) getAzimuthSpan{
+    return azimuth_span;
+}
+
+- (void) setElevationSpan:(float) f{
+    elevation_span=f;
+}
+//! Get Azimuth spans
+- (float) getElevationSpan{
+    return elevation_span;
+}
+
 @end

@@ -3,7 +3,7 @@
 //  PdParty
 //
 //  Created by Lud's on 8/04/13.
-//  Copyright (c) 2013 danomatika. All rights reserved.
+//  Copyright (c) 2013 UdeM. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

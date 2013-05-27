@@ -73,7 +73,7 @@
             s.elevation_span = [[packet.arguments objectAtIndex:4]floatValue];
             s.gain = [[packet.arguments objectAtIndex:5]floatValue];
             //NSLog(@"paket : %d", channel);
-            if ([controller.redrawTime timeIntervalSinceNow]<-0.050f){
+            if ([controller.redrawTime timeIntervalSinceNow]<-0.200f){
                 [controller.domeView setNeedsDisplay];
                 controller.redrawTime = [NSDate date];
                  
@@ -178,6 +178,27 @@
     [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
     return YES;
 }
+- (BOOL) moveElevSpan:(SoundSource*)s{
+    //NSLog(@"endElevSpanMove , touch : %d, source %d", s.touchId, s.channel);
+    OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
+    message.address = @"/moveElevSpan";
+    [message addInt:s.channel];
+    [message addFloat:s.elevation_span];
+    [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
+    return YES;
+}
+
+- (BOOL) moveAzimSpan:(SoundSource*)s{
+    //NSLog(@"endElevSpanMove , touch : %d, source %d", s.touchId, s.channel);
+    OSCMutableMessage *message = [[OSCMutableMessage alloc]init];
+    message.address = @"/moveAzimSpan";
+    [message addInt:s.channel];
+    [message addFloat:s.azimuth_span];
+    NSLog(@"s.elevationSPan OSC %f", s.azimuth_span );
+    [connection sendPacket:message toHost:self.sendHost port:self.sendPort];
+    return YES;
+}
+
 - (BOOL) endElevSpanMove:(SoundSource*)s{
     NSLog(@"endElevSpanMove , touch : %d, source %d", s.touchId, s.channel);
     OSCMutableMessage *message = [[OSCMutableMessage alloc]init];

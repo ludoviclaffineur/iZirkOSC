@@ -32,7 +32,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-
+    NSLog(@"redrawbegin");
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(contextRef,2);
     CGContextSetRGBStrokeColor(contextRef, 0.0, 0.0, 255.0, 1.0);
@@ -40,6 +40,7 @@
     CGContextDrawPath(contextRef,kCGPathStroke);
     [self drawCrosshairs];
     [self drawSourcePoint];
+    NSLog(@"END Redraw");
 }
 
 -(void) drawCrosshairs

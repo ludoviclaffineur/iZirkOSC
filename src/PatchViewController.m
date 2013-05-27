@@ -117,23 +117,6 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     NSSet *myTouches = [event touchesForView:self.domeView];
 
-
-
-
-/*    if (movementmode !=1 && [myTouches count] == 1) {
-        NSArray *touches = [myTouches allObjects];
-        UITouch *touch = [touches objectAtIndex:0];
-        CGPoint touchPosition = [touch locationInView:(self.domeView)];
-        CGPoint relativePoint =  CGPointMake( touchPosition.x- domeView.mCentre.x ,   touchPosition.y- domeView.mCentre.y) ;
-        for (int i=0;i<domeView.mChannelCount; i++){
-            SoundSource *s = [domeView.sources objectAtIndex:i];
-            if ([s containsPoint:relativePoint]) {
-                s.touch = touch;
-                //[osc beginTouch:s];
-            }
-        }
-    }
-    else{*/
         for(UITouch *touch in touches) {
             int touchId = 0;
             while([[activeTouches allValues] containsObject:[NSNumber numberWithInt:touchId]]){
@@ -163,52 +146,28 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-
+    
 	NSSet *myTouches = [event touchesForView:self.domeView];
- //   NSLog(@"Touch touch mode %d",movementmode);
-   /* if (movementmode != 1){ //non independant mode
-        NSArray *touches = [myTouches allObjects];
-        UITouch *touch = [touches objectAtIndex:0];
+    for(UITouch *touch in myTouches) {
+        int touchId = [[activeTouches objectForKey:[NSValue valueWithPointer:(__bridge const void *)(touch)]] intValue];
         CGPoint touchPosition = [touch locationInView:(self.domeView)];
+        //NSLog(@"Position doigt  : %f,%f", touchPosition.x,touchPosition.y);
         for (int i=0;i<domeView.mChannelCount; i++){
             SoundSource *s = [domeView.sources objectAtIndex:i];
-            if(0 == s.touchId){
-                CGPoint relativePoint =  CGPointMake( touchPosition.x- domeView.mCentre.x ,   touchPosition.y- domeView.mCentre.y) ;
-                [s setPositionHV:relativePoint];
-                if([osc isListening]){
-                    if ([osc sendSource:s] && [redrawTime timeIntervalSinceNow]<-0.050f) {
-                        [self.domeView setNeedsDisplay];
-                        redrawTime = [NSDate date];
+            if (movementmode != 1){
+                if(touchId == s.touchId && touchId ==0){
+                    CGPoint relativePoint =  CGPointMake( touchPosition.x- domeView.mCentre.x ,   touchPosition.y- domeView.mCentre.y) ;
+                    [s setPositionHV:relativePoint];
+                    if([osc isListening]){
+                        if ([osc sendSource:s] && [redrawTime timeIntervalSinceNow]<-0.050f) {
+                            [self.domeView setNeedsDisplay];
+                            redrawTime = [NSDate date];
+                        }
+                        //NSLog(@"sending OSC");
                     }
                 }
             }
-        }
-    }
-    else{*/
-
-        for(UITouch *touch in myTouches) {
-            int touchId = [[activeTouches objectForKey:[NSValue valueWithPointer:(__bridge const void *)(touch)]] intValue];
-            CGPoint touchPosition = [touch locationInView:(self.domeView)];
-            //NSLog(@"Position doigt  : %f,%f", touchPosition.x,touchPosition.y);
-            for (int i=0;i<domeView.mChannelCount; i++){
-                SoundSource *s = [domeView.sources objectAtIndex:i];
-                if (movementmode != 1){
-                    if(touchId == s.touchId && touchId ==0){
-                        CGPoint relativePoint =  CGPointMake( touchPosition.x- domeView.mCentre.x ,   touchPosition.y- domeView.mCentre.y) ;
-                        [s setPositionHV:relativePoint];
-                        if([osc isListening]){
-                            if ([osc sendSource:s] && [redrawTime timeIntervalSinceNow]<-0.050f) {
-                                // [self.domeView setNeedsDisplay];
-                                redrawTime = [NSDate date];
-                            }
-                            //NSLog(@"sending OSC");
-                        }
-                    }
-
-
-                }
-                else{
-
+            else{
                 if(touchId == s.touchId){
                     CGPoint relativePoint =  CGPointMake( touchPosition.x- domeView.mCentre.x ,   touchPosition.y- domeView.mCentre.y) ;
                     [s setPositionHV:relativePoint];
@@ -219,20 +178,10 @@
                         }
                         //NSLog(@"sending OSC");
                     }
-
-
                 }
-                }
-
-
             }
-            //		DDLogVerbose(@"touch %d: down %.4f %.4f", touchId+1, pos.x, pos.y);
-            /*[PureData sendTouch:RJ_TOUCH_DOWN forId:touchId atX:pos.x andY:pos.y];
-             if(osc.isListening) {
-             [osc sendTouch:RJ_TOUCH_DOWN forId:touchId atX:pos.x andY:pos.y];
-             }*/
         }
-    //}
+    }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -315,15 +264,17 @@
         if(sender == _ElevSpanSlider){
             for(SoundSource *s in domeView.sources){
                 if (s.touchId != -1){
-                    [osc endElevSpanMove:s];
+                    [s setElevation_span:_ElevSpanSlider.value];
+                    [osc moveElevSpan:s];
                 }
             }
         }
         else if(sender == _AzimSpanSlider){
-            
             for(SoundSource *s in domeView.sources){
                 if (s.touchId != -1){
-                    [osc endAzimSpanMove:s];
+                    [s setAzimuthSpan:_AzimSpanSlider.value];
+                    NSLog(@"s.azimuth_span : %f",s.azimuth_span);
+                    [osc moveAzimSpan:s];
                 }
             }
         }

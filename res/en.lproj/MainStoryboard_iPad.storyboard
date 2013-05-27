@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5rL-A3-Irz">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="360" translatesAutoresizingMaskIntoConstraints="NO" id="5rL-A3-Irz">
                                 <connections>
                                     <action selector="SliderTouchUpInsider:" destination="uDw-cH-S0S" eventType="touchUpInside" id="AFC-gd-sjb"/>
                                     <action selector="SliderTouchUpOutside:" destination="uDw-cH-S0S" eventType="touchUpOutside" id="H0l-Ca-nlz"/>
@@ -25,7 +25,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xFd-Je-sHa">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="90" translatesAutoresizingMaskIntoConstraints="NO" id="xFd-Je-sHa">
                                 <connections>
                                     <action selector="SliderTouchUpInsider:" destination="uDw-cH-S0S" eventType="touchUpInside" id="7nQ-RM-K69"/>
                                     <action selector="SliderTouchUpOutside:" destination="uDw-cH-S0S" eventType="touchUpOutside" id="Bak-Kz-AUC"/>
@@ -286,7 +286,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyJ-DG-q2G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935" y="-1654"/>
+            <point key="canvasLocation" x="887" y="-784"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="c8E-f3-AjP">

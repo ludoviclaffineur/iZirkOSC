@@ -26,6 +26,14 @@
 - (bool) containsPoint :(CGPoint) p;
 //! set the HV position (XY)
 - (void) setPositionHV: (CGPoint)p;
+//! Set the Azimuth span
+- (void) setAzimuthSpan:(float) f;
+//! Get Azimuth spans
+- (float) getAzimuthSpan;
+//! Set the Azimuth span
+- (void) setElevationSpan:(float) f;
+//! Get Azimuth spans
+- (float) getElevationSpan;
 //! returns the X postion
 - (float) getPosX;
 //! returns the Y postion
