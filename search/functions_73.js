@@ -1,6 +1,8 @@
 var searchData=
 [
   ['sendsource_3a',['sendSource:',['../interface_osc.html#a5eba6bbd9e4e8843379940f55b8f18af',1,'Osc']]],
+  ['setazimuthspan_3a',['setAzimuthSpan:',['../interface_sound_source.html#a303cb38a3a8ed1dd49b105be2e7cdcce',1,'SoundSource']]],
+  ['setelevationspan_3a',['setElevationSpan:',['../interface_sound_source.html#aa16522d90fdcbfdda8778129e7d3569d',1,'SoundSource']]],
   ['sethost_3a',['setHost:',['../interface_osc_view_controller.html#a631d66db331eabc2bd8197de507650b6',1,'OscViewController']]],
   ['setincomingport_3a',['setIncomingPort:',['../interface_osc_view_controller.html#a513bd461b8e4adc115d2b114b3510724',1,'OscViewController']]],
   ['setoutgoingport_3a',['setOutgoingPort:',['../interface_osc_view_controller.html#abdee7b5776e0ea27b8c25ea04f4e335a',1,'OscViewController']]],
