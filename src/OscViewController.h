@@ -12,7 +12,7 @@
 
 @class Osc;
 
-// start page view
+//! Slider Menu
 @interface OscViewController : UITableViewController
 
 //! Switch button

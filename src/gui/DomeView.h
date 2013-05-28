@@ -3,7 +3,7 @@
 //  PdParty
 //
 //  Created by Lud's on 8/04/13.
-//  Copyright (c) 2013 UdeM. All rights reserved.
+//  Copyright 2013 Ludovic Laffineur ludovic.laffineur@gmail.com 
 //
 
 #import <UIKit/UIKit.h>
@@ -14,6 +14,7 @@ static const float kMarksAngles[] =
 };
 
 static const int kNumMarks = sizeof(kMarksAngles)/sizeof(kMarksAngles[0]);
+//! Dome view
 @interface DomeView : UIView{
     //! dome frame
     Rect	mDomeFrame;

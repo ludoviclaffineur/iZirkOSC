@@ -1,17 +1,16 @@
 /*
  * Copyright (c) 2013 Dan Wilcox <danomatika@gmail.com>
- *
+ * 
  * BSD Simplified License.
  * For information on usage and redistribution, and for a DISCLAIMER OF ALL
  * WARRANTIES, see the file, "LICENSE.txt," in this distribution.
- *
+ * Copyright 2013 Ludovic LAFFINEUR ludovic.laffineur@gmail.com
  * See https://github.com/danomatika/PdParty for documentation
  *
  */
 #import "OscViewController.h"
 
 #import "AppDelegate.h"
-//#import "WebServer.h"
 #import "Util.h"
 
 @interface OscViewController () {

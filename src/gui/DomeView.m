@@ -3,7 +3,7 @@
 //  PdParty
 //
 //  Created by Lud's on 8/04/13.
-//  Copyright (c) 2013 danomatika. All rights reserved.
+//  Copyright 2013 Ludovic Laffineur ludovic.laffineur@gmail.com 
 //
 
 #import "DomeView.h"
